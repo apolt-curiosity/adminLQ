@@ -1,0 +1,11 @@
+# Byte-compiled
+__pycache__/
+
+# Flask stuff
+instance/
+
+# Environments
+venv/
+
+# Visual Studio Code
+.vscode/
