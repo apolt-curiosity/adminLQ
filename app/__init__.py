@@ -1,6 +1,6 @@
 from flask import Flask
 
-def create_app(config_name='config.flask_default'):
+def create_app(config_name='config.default'):
     """创建和配置flask对象
      
     :param config_name:普通配置文件的路径
@@ -8,10 +8,10 @@ def create_app(config_name='config.flask_default'):
     """
     app = Flask(__name__, instance_relative_config=True)
     
-    # 读取普通配置文件，默认为config文件夹下flask_default.py文件
+    # 读取普通配置文件，默认为config文件夹下default.py文件
     app.config.from_object(config_name)
 
-    # 从instance文件夹读取密码配置文件config.py
+    # 从instance文件夹读取特殊配置文件config.py
     app.config.from_pyfile('config.py')
 
     # 蓝图注册
