@@ -1,0 +1,27 @@
+{% extends "main/zh-CN/base.html" %}
+{% block title %}
+    <title>skdjflsd</title>
+{% endblock %}
+{% block nav %}
+    {% include 'main/zh-CN/nav.html' %}
+{% endblock %}
+{% block content %}
+    <h1>home content</h1>
+    <p>{{textp}}</p>
+    <img src="static/main/img/111.jpeg" alt="222">
+    <p class="bg-danger">sdfd</p>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+{% endblock %}
+
+{% block footer %}
+    {% include 'main/zh-CN/footer.html' %}
+{% endblock %}
