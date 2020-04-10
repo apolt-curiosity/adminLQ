@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="{% block lang %}{% endblock %}">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='website/shared/css/bootstrap-4.4.1.min.css') }}">
+    {% block title %}{% endblock %}
+</head>
+<body>
+    {% block nav %}{% endblock %}
+    {% block content %}{% endblock %}
+    {% block footer %}{% endblock %}
+    <script src="{{ url_for('static', filename='website/shared/js/jquery-3.4.1.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='website/shared/js/popper-1.16.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='website/shared/js/bootstrap-4.4.1.min.js') }}"></script>
+</body>
+</html>

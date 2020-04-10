@@ -1,16 +1,14 @@
-{% extends "main/zh-CN/base.html" %}
+{% extends "website/base/base.html" %}
+{% block lang %}zh-CN{% endblock %}
 {% block title %}
-    <title>skdjflsd</title>
+    <title>cn/home</title>
 {% endblock %}
 {% block nav %}
-    {% include 'main/zh-CN/nav.html' %}
+    {% include 'website/zh_cn/nav.html' %}
 {% endblock %}
 {% block content %}
     <h1>home content</h1>
-    <p>{{textp1}}</p>
-    <p>{{text1}}</p>
-    <p>{{textp2}}</p>
-    <img src="static/main/img/111.jpeg" alt="222">
+    <img src="static/website/shared/img/example1.jpeg" alt="222">
     <p class="bg-danger">sdfd</p>
     <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -25,5 +23,5 @@
 {% endblock %}
 
 {% block footer %}
-    {% include 'main/zh-CN/footer.html' %}
+    {% include 'website/zh_cn/footer.html' %}
 {% endblock %}
