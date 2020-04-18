@@ -17,14 +17,14 @@ def create_app(config_name='config.default'):
     from .views.website.zh_cn import zh_cn
     app.register_blueprint(zh_cn)
 
-    # from .views.website.es_es import es_es
-    # app.register_blueprint(es_es)
+    from .views.website.es_es import es_es
+    app.register_blueprint(es_es)
 
-    # from .views.website.en import en
-    # app.register_blueprint(en)
+    from .views.website.en import en
+    app.register_blueprint(en)
     
-    from .views.admin import admin
-    app.register_blueprint(admin)
+    # from .views.admin import admin
+    # app.register_blueprint(admin)
 
     # 404错误处理
     def page_not_found(Exception):
