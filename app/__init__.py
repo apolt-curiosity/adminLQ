@@ -23,8 +23,17 @@ def create_app(config_name='config.default'):
     from .views.website.en import en
     app.register_blueprint(en)
     
-    # from .views.admin import admin
-    # app.register_blueprint(admin)
+    from .views.admin.authority import authority
+    app.register_blueprint(authority)
+
+    # 数据库初始化
+    name = app.config['DB_ADMINLQ_NAME']
+    user = app.config['DB_ADMINLQ_USER']
+    password = app.config['DB_ADMINLQ_PASSWORD']
+    host = app.config['DB_ADMINLQ_HOST']
+
+    from .models import db_adminlq
+    db_adminlq.init(database=name,user=user,password=password,host=host)
 
     # 404错误处理
     def page_not_found(Exception):

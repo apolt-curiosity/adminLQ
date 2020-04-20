@@ -1,4 +1,4 @@
-from flask import Blueprint,render_template,url_for
+from flask import Blueprint,render_template
 
 zh_cn = Blueprint('zh_cn', __name__)
 

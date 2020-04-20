@@ -4,9 +4,6 @@ __pycache__/
 # Flask stuff
 instance/
 
-# Database
-app/models/config.py
-
 # Environments
 venv/
 

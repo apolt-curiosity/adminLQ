@@ -8,7 +8,6 @@ from . import BaseModel
 class AuthUser(BaseModel):
     class Meta:
         table_name = 'auth_user'
-
     username = CharField(primary_key=True,max_length=128)
     nickname = CharField(max_length=128)
     password = TextField()

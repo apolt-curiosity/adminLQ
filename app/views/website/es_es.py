@@ -1,4 +1,4 @@
-from flask import Blueprint,render_template,url_for
+from flask import Blueprint,render_template
 
 es_es = Blueprint('es_es', __name__, url_prefix='/es')
 

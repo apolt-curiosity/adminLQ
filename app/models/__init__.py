@@ -1,12 +1,17 @@
 from peewee import *
 
-from .config import DATABASE,USER,PASSWORD,HOST
+# Postgresql数据库非初始化，仅定义
+db_adminlq = PostgresqlDatabase(None)
 
-# Postgresql数据库初始化
-psql_db = PostgresqlDatabase(DATABASE, user=USER, password=PASSWORD, host=HOST)
+def _db_adminlq_connect():
+    db_adminlq.connect(reuse_if_open=True)
+
+def _db_adminlq_close(exc):
+    if not db_adminlq.is_closed():
+        db_adminlq.close()
 
 class BaseModel(Model):
     class Meta:
-        database = psql_db
+        database = db_adminlq
 
 from .authority import *
