@@ -21,4 +21,6 @@ def ttt():
             break
     return jsonify(ret)
 
-
+@authority.route('/set')
+def set_jwt():
+    return 'setjwt'
