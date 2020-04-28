@@ -1,6 +1,6 @@
 from flask import Flask
 
-def create_app(config_name='config.default'):
+def create_app(config_name='config.flask'):
     """创建和配置flask对象  
     :param config_name:普通配置文件的路径   
     :return:Flask对象
