@@ -1,6 +1,6 @@
 from flask import Blueprint,jsonify
 
-from ...models import AuthUser,_db_adminlq_connect,_db_adminlq_close
+from ..models import AuthUser,_db_adminlq_connect,_db_adminlq_close
 
 authority = Blueprint('authority', __name__, url_prefix='/admin/authority')
 

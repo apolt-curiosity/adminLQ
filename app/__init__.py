@@ -14,16 +14,7 @@ def create_app(config_name='config.flask'):
     app.config.from_pyfile('config.py')
 
     # 蓝图注册
-    from .views.website.zh_cn import zh_cn
-    app.register_blueprint(zh_cn)
-
-    from .views.website.es_es import es_es
-    app.register_blueprint(es_es)
-
-    from .views.website.en import en
-    app.register_blueprint(en)
-    
-    from .views.admin.authority import authority
+    from .views.authority import authority
     app.register_blueprint(authority)
 
     # 数据库初始化
@@ -37,7 +28,7 @@ def create_app(config_name='config.flask'):
 
     # 404错误处理
     def page_not_found(Exception):
-        return '404!!!'
+        return 'Admin Error 404 ...'
     app.register_error_handler(404, page_not_found)
     
     return app
