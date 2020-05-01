@@ -22,7 +22,7 @@ authority.teardown_request(_db_adminlq_close)
 # rsa_private_key = current_app.config['RSA_PRIVATE_KEY']
 
 @authority.route('/')
-def get_cookies():
+def get_cookie():
     auth_user = AuthUser()
     ret = {'1':1,'2':2}
     i = 1
