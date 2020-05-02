@@ -1,4 +1,5 @@
 from time import time
+from datetime import datetime
 
 from flask import Blueprint
 from flask import jsonify
@@ -67,11 +68,16 @@ def set_cookie():
     # jwt参数
     header = current_app.config['JWT_HEADER']
     rsa_private_key = current_app.config['RSA_PRIVATE_KEY']
-
-    payload = {'iss': 'adminlq', 'sub': 'chq', 'user':'flq'}
+    # iss: jwt签发者
+    payload = {
+        'iss': 'adminlq',
+        'sub': 'chq',
+        'exp': datetime.utcnow(),
+        'user':'flq'
+    }
     jwt_value = jwt.encode(header, payload, rsa_private_key)
 
-    resp = make_response(redirect(url_for('authority.get_cookie')))
+    resp = make_response(redirect(url_for('auth.get_cookie')))
 
     key = 'jwt'
     value = jwt_value
