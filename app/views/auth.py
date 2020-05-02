@@ -13,15 +13,24 @@ from ..models import AuthUser
 from ..models import _db_adminlq_connect
 from ..models import _db_adminlq_close
 
-authority = Blueprint('authority', __name__, url_prefix='/admin/authority')
+auth = Blueprint('auth', __name__, url_prefix='/admin/auth')
 
-authority.before_request(_db_adminlq_connect)
-authority.teardown_request(_db_adminlq_close)
+auth.before_request(_db_adminlq_connect)
+auth.teardown_request(_db_adminlq_close)
 
-# rsa_public_key = current_app.config['RSA_PUBLIC_KEY']
-# rsa_private_key = current_app.config['RSA_PRIVATE_KEY']
+def _get_user_real_ip():
+    """获取用户真实ip
+    """
+    if request.headers.getlist('X-Forwarded-For'):
+        ip = request.headers.getlist('X-Forwarded-For')[0]
+    elif request.headers.get('X-Real-IP'):
+        ip = request.headers.get('X-Real-IP')
+    else:
+        ip = request.remote_addr
+    
+    return ip
 
-@authority.route('/')
+@auth.route('/')
 def get_cookie():
     auth_user = AuthUser()
     ret = {'1':1,'2':2}
@@ -44,7 +53,7 @@ def get_cookie():
     
     return jsonify(claims)
 
-@authority.route('/set')
+@auth.route('/set')
 def set_cookie():
     # cookie参数
     path = current_app.config['SET_COOKIE_PATH']
@@ -79,3 +88,7 @@ def set_cookie():
     )
 
     return resp
+
+@auth.route('/ip')
+def get_ip():
+    return request.remote_addr

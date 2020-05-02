@@ -14,8 +14,8 @@ def create_app(config_name='config.flask'):
     app.config.from_pyfile('config.py')
 
     # 蓝图注册
-    from .views.authority import authority
-    app.register_blueprint(authority)
+    from .views.auth import auth
+    app.register_blueprint(auth)
 
     # 数据库初始化
     name = app.config['DB_ADMINLQ_NAME']
