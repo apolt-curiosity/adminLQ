@@ -14,4 +14,4 @@ class BaseModel(Model):
     class Meta:
         database = db_adminlq
 
-from .authority import *
+from .auth import AuthUser

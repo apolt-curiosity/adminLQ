@@ -1,5 +1,4 @@
 from time import time
-from datetime import datetime
 
 from flask import Blueprint
 from flask import jsonify
@@ -13,23 +12,15 @@ from authlib.jose import jwt
 from ..models import AuthUser
 from ..models import _db_adminlq_connect
 from ..models import _db_adminlq_close
+from ..utils import _auth_get_user_real_ip
+from ..utils import _auth_jwt_encode
 
 auth = Blueprint('auth', __name__, url_prefix='/admin/auth')
 
 auth.before_request(_db_adminlq_connect)
 auth.teardown_request(_db_adminlq_close)
 
-def _get_user_real_ip():
-    """获取用户真实ip
-    """
-    if request.headers.getlist('X-Forwarded-For'):
-        ip = request.headers.getlist('X-Forwarded-For')[0]
-    elif request.headers.get('X-Real-IP'):
-        ip = request.headers.get('X-Real-IP')
-    else:
-        ip = request.remote_addr
-    
-    return ip
+
 
 @auth.route('/')
 def get_cookie():
@@ -50,7 +41,12 @@ def get_cookie():
     rsa_public_key = current_app.config['RSA_PUBLIC_KEY']
     
     s = request.cookies.get('jwt')
-    claims = jwt.decode(s, rsa_public_key)
+    
+    try:
+        claims = jwt.decode(s, rsa_public_key)
+        claims.validate()
+    except Exception as e:
+        return str(e)
     
     return jsonify(claims)
 
@@ -72,9 +68,11 @@ def set_cookie():
     payload = {
         'iss': 'adminlq',
         'sub': 'chq',
-        'exp': datetime.utcnow(),
+        'exp': int(time() + 10),
         'user':'flq'
     }
+
+    
     jwt_value = jwt.encode(header, payload, rsa_private_key)
 
     resp = make_response(redirect(url_for('auth.get_cookie')))
@@ -97,4 +95,4 @@ def set_cookie():
 
 @auth.route('/ip')
 def get_ip():
-    return request.remote_addr
+    return _auth_jwt_encode()
