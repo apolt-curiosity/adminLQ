@@ -7,6 +7,7 @@ from flask import url_for
 from flask import request
 from flask import current_app
 from flask import make_response
+from flask import render_template
 from authlib.jose import jwt
 
 from ..models import AuthUser
@@ -34,8 +35,7 @@ def get_cookie():
         if i == 2:
             ret["2"] = user
             break
-    
-    
+       
    
     
     rsa_public_key = current_app.config['RSA_PUBLIC_KEY']
@@ -49,6 +49,10 @@ def get_cookie():
         return str(e)
     
     return jsonify(claims)
+
+@auth.route('/vue')
+def vue_test():
+    return render_template(url_for('static', filename='dist/index.html'))
 
 @auth.route('/set')
 def set_cookie():

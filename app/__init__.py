@@ -5,7 +5,7 @@ def create_app(config_name='config.flask'):
     :param config_name:普通配置文件的路径   
     :return:Flask对象
     """
-    app = Flask(__name__, instance_relative_config=True)
+    app = Flask(__name__, instance_relative_config=True,static_url_path='/admin/static')
     
     # 读取普通配置文件，默认为config文件夹下default.py文件
     app.config.from_object(config_name)
@@ -16,6 +16,9 @@ def create_app(config_name='config.flask'):
     # 蓝图注册
     from .views.auth import auth
     app.register_blueprint(auth)
+
+    from .views.main import main
+    app.register_blueprint(main)
 
     # 数据库初始化
     name = app.config['DB_ADMINLQ_NAME']
