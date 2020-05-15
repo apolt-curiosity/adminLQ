@@ -7,9 +7,113 @@
     <title>admin</title>
 </head>
 <body>
-    <h1>admin</h1>
-    <button class="button is-primary is-rounded">button primary</button>
-    <button>button primary</button>
+   <div class="" id="aaa">
+       <h1>收到了解放了</h1>
+   </div>
+
+   <div class="columns is-mobile is-centered has-background-primary">
+    <div class="column is-half">
+      
+        <button class="button is-danger has-text-centered" id="mybutton">开　始</button>
+      
+    </div>
+  </div>
+
+   
+   <style>
+       #aaa{
+           width: 200px;
+       }
+        /* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 768px) {
+    #aaa{
+        position: absolute;
+        left:-200px;
+        top:0px;
+        transition: all 0.6s;
+        min-height: 100vh;
+        background-color: blueviolet;
+       }
+}
+
+ /* Small devices (landscape phones, 576px and up) */
+@media (min-width: 769px) and (max-width: 1023px) {
+    #aaa{
+        position: absolute;
+        left:-200px;
+        top:0px;
+        transition: all 0.6s;
+        min-height: 100vh;
+        background-color:brown;
+       }
+}
+
+ /* Medium devices (tablets, 768px and up) */
+@media (min-width: 1024px) and (max-width: 1215px) {
+    #aaa{
+        position: absolute;
+        left:0px;
+        top:0px;
+        transition: all 0.6s;
+        min-height: 100vh;
+        background-color:cornflowerblue;
+       }
+}
+
+ /* Large devices (desktops, 992px and up) */
+@media (min-width: 1216px) and (max-width: 1407px) {
+    #aaa{
+        position: absolute;
+        left:0px;
+        top:0px;
+        transition: all 0.6s;
+        min-height: 100vh;
+        background-color:darkkhaki;
+       }
+}
+
+ /* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1408px) {
+    #aaa{
+        position: absolute;
+        left:0px;
+        top:0px;
+        transition: all 0.6s;
+        min-height: 100vh;
+        background-color:pink;
+       }
+}
+
+
+
+   </style>
+    
+    <script>
+        var f = document.getElementById('aaa');
+        document.addEventListener('click',function(){
+            if(window.getComputedStyle(f,null)['marginLeft']=='200px'){
+                    f.style.marginLeft = 0 + 'px';
+                }
+        });
+        window.onresize = function(){
+            f.style.marginLeft ='0px';
+        };
+
+        var f = document.getElementById('aaa');
+        document.getElementById('mybutton').addEventListener('click',function(){
+            // document.getElementById('ddd').classList.add('animate__fadeOutLeft');
+            // document.getElementById('eee').classList.add('animate__fadeInRight');
+            // document.getElementById('ddd').classList.remove('is-3');
+            if(window.getComputedStyle(f,null)['left']=='-200px'){
+                if(window.getComputedStyle(f,null)['marginLeft']=='200px'){
+                    f.style.marginLeft = 0 + 'px';
+                }else{
+                    f.style.marginLeft = 200 + 'px';
+                }
+            }
+            
+        });
+    </script>
     <script src="{{ url_for('static', filename='js/vue.js') }}"></script>
 </body>
 </html>
