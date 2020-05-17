@@ -4,13 +4,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adminlq.css') }}">
+    <script src="{{ url_for('static', filename='js/vue.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vue-router.js') }}"></script>
     <title>admin</title>
 </head>
 <body>
-   <div class="" id="aaa">
-       <h1>收到了解放了</h1>
+   <div id="sidebar" class="has-background-grey-darker">
+       
    </div>
-
+   
    <div class="columns is-mobile is-centered has-background-primary">
     <div class="column is-half">
       
@@ -19,101 +22,22 @@
     </div>
   </div>
 
+  
+  <!-- <div id="app">
+    <h1>Hello App!</h1>
+    <p>
+        <router-link to="/foo">
+            <button class="button is-primary">foo</button>
+        </router-link>
+      <router-link to="/bar">Go to Bar</router-link>
+    </p>
    
-   <style>
-       #aaa{
-           width: 200px;
-       }
-        /* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 768px) {
-    #aaa{
-        position: absolute;
-        left:-200px;
-        top:0px;
-        transition: all 0.6s;
-        min-height: 100vh;
-        background-color: blueviolet;
-       }
-}
-
- /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 769px) and (max-width: 1023px) {
-    #aaa{
-        position: absolute;
-        left:-200px;
-        top:0px;
-        transition: all 0.6s;
-        min-height: 100vh;
-        background-color:brown;
-       }
-}
-
- /* Medium devices (tablets, 768px and up) */
-@media (min-width: 1024px) and (max-width: 1215px) {
-    #aaa{
-        position: absolute;
-        left:0px;
-        top:0px;
-        transition: all 0.6s;
-        min-height: 100vh;
-        background-color:cornflowerblue;
-       }
-}
-
- /* Large devices (desktops, 992px and up) */
-@media (min-width: 1216px) and (max-width: 1407px) {
-    #aaa{
-        position: absolute;
-        left:0px;
-        top:0px;
-        transition: all 0.6s;
-        min-height: 100vh;
-        background-color:darkkhaki;
-       }
-}
-
- /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1408px) {
-    #aaa{
-        position: absolute;
-        left:0px;
-        top:0px;
-        transition: all 0.6s;
-        min-height: 100vh;
-        background-color:pink;
-       }
-}
-
-
-
-   </style>
+    <router-view></router-view>
+  </div>
     
-    <script>
-        var f = document.getElementById('aaa');
-        document.addEventListener('click',function(){
-            if(window.getComputedStyle(f,null)['marginLeft']=='200px'){
-                    f.style.marginLeft = 0 + 'px';
-                }
-        });
-        window.onresize = function(){
-            f.style.marginLeft ='0px';
-        };
-
-        var f = document.getElementById('aaa');
-        document.getElementById('mybutton').addEventListener('click',function(){
-            // document.getElementById('ddd').classList.add('animate__fadeOutLeft');
-            // document.getElementById('eee').classList.add('animate__fadeInRight');
-            // document.getElementById('ddd').classList.remove('is-3');
-            if(window.getComputedStyle(f,null)['left']=='-200px'){
-                if(window.getComputedStyle(f,null)['marginLeft']=='200px'){
-                    f.style.marginLeft = 0 + 'px';
-                }else{
-                    f.style.marginLeft = 200 + 'px';
-                }
-            }
-            
-        });
-    </script>
-    <script src="{{ url_for('static', filename='js/vue.js') }}"></script>
+  <template id='foo'>
+    <div>foo0000</div>
+    </template> -->
+    <script src="{{ url_for('static', filename='js/adminlq.js') }}"></script>
 </body>
 </html>
