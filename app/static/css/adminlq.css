@@ -1,23 +1,21 @@
 #sidebar{
-    width: 220px;
+    width: 210px;
     min-height: 100vh;
     position: fixed;
     top: 0px;
-    /* transition-property: transform; */
-    transition-property: margin-left;
+    transition-property: transform, left;
     transition-duration: 0.5s;
 }
 .sidebar-transtion{
-    /* transform: translate(220px, 0px); */
-    margin-left: 220px;
+    transform: translate(220px, 0px);
 }
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
     #sidebar{
-        left: -220px;
+        left: -210px;
         
     }
 }
-@media (min-width: 769px) {
+@media (min-width: 1024px) {
     #sidebar{
         left: 0px;
     }
