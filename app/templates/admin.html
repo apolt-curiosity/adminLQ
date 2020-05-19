@@ -10,18 +10,38 @@
     <title>admin</title>
 </head>
 <body>
-   <div id="sidebar" class="has-background-grey-darker">
-       
-   </div>
-   
-   <div class="columns is-mobile is-centered has-background-primary">
+  {% raw %}
+   <div id="sidebar" class="has-background-warning" v-bind:class="classObject">
+       <h1>dddddddddddddd</h1>
+       <h1>dddddddddddddd</h1>
+       <h1>dddddddddddddd</h1>
+       <h1>dddddddddddddd</h1>
+       <h1>dddddddddddddd</h1>
+       <h1>dddddddddddddd</h1>
+       <h1>dddddddddddddd</h1>
+       <h1>dddddddddddddd</h1>
+       <h1>dddddddddddddd</h1>
+       <h1>dddddddddddddd</h1>
+       <h1>dddddddddddddd</h1>
+       <h1>dddddddddddddd</h1>
+       <h1>dddddddddddddd</h1>
+       <h1>dddddddddddddd</h1>
+       <h1>dddddddddddddd</h1>
+       <h1>dddddddddddddd</h1>
+
+  </div>
+  {% endraw %}
+   <!-- <div class="columns is-mobile is-centered has-background-primary">
     <div class="column is-half">
       
-        <button class="button is-danger has-text-centered" id="mybutton">开　始</button>
+        <button class="button is-danger has-text-centered" v-on:click="show" id="mybutton">开　始</button>
       
     </div>
-  </div>
-
+  </div> -->
+  <p class="text-right">
+    <button class="button is-danger" v-on:click="show" id="mybutton">开　始</button>
+  </p>
+  
   
   <!-- <div id="app">
     <h1>Hello App!</h1>
