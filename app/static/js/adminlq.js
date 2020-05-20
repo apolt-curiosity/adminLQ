@@ -1,15 +1,25 @@
-window.onresize = function kk(){
-    if((window.innerWidth<=400)){
-        sidebar.classObject['sidebar-hidden'] = true
+window.onresize = () => {
+    if((window.innerWidth <= 1023)){
+        leftbar.classObject['adminlq-leftbar-hidden'] = true
     }else{
-        sidebar.classObject['sidebar-hidden'] = false
+        leftbar.classObject['adminlq-leftbar-hidden'] = false 
     }
 }
-const sidebar = new Vue({
-    el: '#sidebar',
+// const topbarContent = new Vue({
+//     el: '#topbar-blank',
+//     data: {
+//         classObject: {
+//             'topbar-content-margin': !(window.innerWidth <= 1023)
+//         }
+//     }
+
+// })
+
+const leftbar = new Vue({
+    el: '#adminlq-leftbar',
     data: {
         classObject: {
-            'sidebar-hidden': (window.innerWidth<=400)
+            'adminlq-leftbar-hidden': (window.innerWidth <= 1023)
         }
     }
 
@@ -20,7 +30,7 @@ const mybutton = new Vue({
     methods: {
         show: function(event){
             
-            if((window.innerWidth<=400)){
+            if((window.innerWidth<=1023)){
                 alert('dd')
                 sidebar.classObject['sidebar-hidden'] = !sidebar.classObject['sidebar-hidden']
             }

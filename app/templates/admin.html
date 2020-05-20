@@ -11,53 +11,28 @@
 </head>
 <body>
   {% raw %}
-   <div id="sidebar" class="has-background-warning" v-bind:class="classObject">
-       <h1>dddddddddddddd</h1>
-       <h1>dddddddddddddd</h1>
-       <h1>dddddddddddddd</h1>
-       <h1>dddddddddddddd</h1>
-       <h1>dddddddddddddd</h1>
-       <h1>dddddddddddddd</h1>
-       <h1>dddddddddddddd</h1>
-       <h1>dddddddddddddd</h1>
-       <h1>dddddddddddddd</h1>
-       <h1>dddddddddddddd</h1>
-       <h1>dddddddddddddd</h1>
-       <h1>dddddddddddddd</h1>
-       <h1>dddddddddddddd</h1>
-       <h1>dddddddddddddd</h1>
-       <h1>dddddddddddddd</h1>
-       <h1>dddddddddddddd</h1>
+  <div id="adminlq-topbar" class="container is-fluid has-background-white is-marginless is-paddingless">
+    <div class="columns is-gapless">
+      <div id="topbar-blank" class="column is-narrow"></div>
+      <div id="topbar-content" class="column">
+        <button id="topbar-content-leftbar-button" class="button is-primary" style="margin-left: 30px;">OK</button>
+      </div>
+    </div>
+  </div>
+  <div id="adminlq-leftbar" class="has-background-grey-darker" v-bind:class="classObject">
 
   </div>
-  {% endraw %}
-   <!-- <div class="columns is-mobile is-centered has-background-primary">
-    <div class="column is-half">
-      
-        <button class="button is-danger has-text-centered" v-on:click="show" id="mybutton">开　始</button>
-      
-    </div>
-  </div> -->
-  <p class="text-right">
-    <button class="button is-danger" v-on:click="show" id="mybutton">开　始</button>
-  </p>
-  
-  
-  <!-- <div id="app">
-    <h1>Hello App!</h1>
-    <p>
-        <router-link to="/foo">
-            <button class="button is-primary">foo</button>
-        </router-link>
-      <router-link to="/bar">Go to Bar</router-link>
-    </p>
-   
-    <router-view></router-view>
+  <div id="adminlq-rightbar">
+
   </div>
-    
-  <template id='foo'>
-    <div>foo0000</div>
-    </template> -->
-    <script src="{{ url_for('static', filename='js/adminlq.js') }}"></script>
+  <div id="adminlq-content" class="container is-fluid is-marginless is-paddingless">
+  
+  </div>
+  <div id="adminlq-footer">
+
+  </div>
+  <div id="adminlq-background"></div>
+  {% endraw %}
+  <script src="{{ url_for('static', filename='js/adminlq.js') }}"></script>
 </body>
 </html>
