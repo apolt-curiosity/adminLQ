@@ -11,27 +11,37 @@
 </head>
 <body>
   {% raw %}
-  <div id="adminlq-topbar" class="container is-fluid has-background-white is-marginless is-paddingless">
-    <div class="columns is-gapless">
-      <div id="topbar-blank" class="column is-narrow"></div>
-      <div id="topbar-content" class="column">
-        <button id="topbar-content-leftbar-button" class="button is-primary" style="margin-left: 30px;">OK</button>
+  <div id="adminlq-header" class="container is-fluid has-background-white is-marginless is-paddingless">
+    <div class="columns is-mobile is-gapless">
+      <div id="header-blank" class="column is-narrow is-hidden-touch"></div>
+      <div id="header-content" class="column">
+        <nav class="level is-mobile">
+          <div class="level-left">
+            <div class="level-item">
+              <button id="header-content-sidebar-button" class="is-hidden-desktop is-flex-touch button is-primary" v-on:click="sidebarToggle">OK</button>
+            </div>
+          </div>
+          <div class="level-right">
+            <div class="level-item">
+
+            </div>
+          </div>
+        </nav>
       </div>
     </div>
   </div>
-  <div id="adminlq-leftbar" class="has-background-grey-darker" v-bind:class="classObject">
-
-  </div>
-  <div id="adminlq-rightbar">
+  <div id="adminlq-sidebar" class="has-background-grey-darker" v-bind:class="classObject">
 
   </div>
   <div id="adminlq-content" class="container is-fluid is-marginless is-paddingless">
-  
+    <div id="div1"></div>
+    <div id="div2"></div>
   </div>
   <div id="adminlq-footer">
 
   </div>
   <div id="adminlq-background"></div>
+  <div id="adminlq-siderbar-mask" v-bind:style="styleObject" v-on:click="sidebarMaskClick"></div>
   {% endraw %}
   <script src="{{ url_for('static', filename='js/adminlq.js') }}"></script>
 </body>
