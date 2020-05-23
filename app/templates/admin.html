@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/adminlq.css') }}">
     <script src="{{ url_for('static', filename='js/vue.js') }}"></script>
     <script src="{{ url_for('static', filename='js/vue-router.js') }}"></script>
-    <title>admin</title>
+    
+    <title>Admin</title>
 </head>
 <body>
-  {% raw %}
   <div id="adminlq-header" class="container is-fluid has-background-white is-marginless is-paddingless">
     <div class="columns is-mobile is-gapless">
       <div id="header-blank" class="column is-narrow is-hidden-touch"></div>
@@ -31,18 +31,30 @@
     </div>
   </div>
   <div id="adminlq-sidebar" class="has-background-grey-darker" v-bind:class="classObject">
-
+    <div id="sidebar-header">
+      <div id="sidebar-header-content" v-bind:style="bb">
+        <p class="has-text-light has-text-centered">Admin</p>
+      </div>
+    </div>
   </div>
   <div id="adminlq-content" class="container is-fluid is-marginless is-paddingless">
-    <div id="div1"></div>
-    <div id="div2"></div>
+    <div class="columns is-mobile is-gapless">
+      <div id="content-blank" class="column is-narrow is-hidden-touch"></div>
+      <div id="content-content" class="column">
+        <div id="content-header-blank"></div>
+
+      </div>
+    </div>
   </div>
   <div id="adminlq-footer">
 
   </div>
   <div id="adminlq-background"></div>
   <div id="adminlq-siderbar-mask" v-bind:style="styleObject" v-on:click="sidebarMaskClick"></div>
-  {% endraw %}
+  
+  
+  
+  {# 最后引入adminlq.js文件 #}
   <script src="{{ url_for('static', filename='js/adminlq.js') }}"></script>
 </body>
 </html>
