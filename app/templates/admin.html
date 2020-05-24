@@ -11,7 +11,56 @@
     <title>Admin</title>
 </head>
 <body>
-  <div id="adminlq-header" class="container is-fluid has-background-white is-marginless is-paddingless">
+  <div id="adminlq-app">
+    {# 顶部工具栏栏 #}
+    <div id="adminlq-topbar" class="container is-fluid has-background-white is-marginless is-paddingless" v-bind:style="adminlqTopbarStyle">
+      <div class="columns is-mobile is-gapless">
+        <div id="topbar-blank" class="column is-narrow is-hidden-touch" v-bind:style="topbarBlankStyle"></div>
+        <div id="topbar-content" class="column">
+          <nav class="level is-mobile">
+            <div class="level-left">
+              <div class="level-item">
+                {# 顶部工具栏左侧按钮 #}
+                <topbar-sidebar-toggle-button></topbar-sidebar-toggle-button>
+              </div>
+            </div>
+            <div class="level-right">
+              <div class="level-item">
+                {# 顶部工具栏右侧按钮 #}
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+    {# 侧边菜单栏 #}
+    <div id="adminlq-sidebar" class="has-background-grey-darker" v-bind:style="sidebarStyle">
+      <div id="sidebar-header">
+        <div id="sidebar-header-content">
+          {# 侧边菜单栏顶部LOGO #}
+        </div>
+      </div>
+    </div>
+    {# 小屏幕设备侧边菜单栏显示时背景 #}
+    <div id="adminlq-mask-for-sidebar" v-bind:style="maskForSidebarStyle" v-on:click="maskForSidebarClick"></div>
+    {# 屏幕背景 #}
+    <div id="adminlq-background" v-bind:style="adminlqBackgroundStyle"></div>
+  </div>
+  {# －－－分割线－－－ #}
+  {# 侧边菜单栏显示／隐藏切换按钮 #}
+  {% raw %}
+  <template id="topbar-sidebar-toggle-button-template">
+    <div id="topbar-sidebar-toggle-button">
+      <button id="ds" class="button is-shadowless is-hidden-desktop is-flex-touch" v-on:click="topbarSidebarToggle">
+        <svg viewBox="0 0 1024 1024" width="24" height="24">
+          <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zM400 646c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zM904 160H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM904 792H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM142.4 642.1L298.7 519c4.5-3.5 4.5-10.3 0-13.9L142.4 381.9c-5.8-4.6-14.4-0.5-14.4 6.9v246.3c0 7.4 8.5 11.6 14.4 7z" p-id="9640"></path>
+        </svg>
+      </button>
+    </div>
+  </template>
+  {% endraw %}
+
+  <!-- <div id="adminlq-header" class="container is-fluid has-background-white is-marginless is-paddingless">
     <div class="columns is-mobile is-gapless">
       <div id="header-blank" class="column is-narrow is-hidden-touch"></div>
       <div id="header-content" class="column">
@@ -51,7 +100,7 @@
   </div>
   <div id="adminlq-background"></div>
   <div id="adminlq-siderbar-mask" v-bind:style="styleObject" v-on:click="sidebarMaskClick"></div>
-  
+   -->
   
   
   {# 最后引入adminlq.js文件 #}
