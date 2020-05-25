@@ -2,6 +2,8 @@
 const TOPBAR_HEIGHT = '50px';
 const TOPBAR_Z_INDEX = 5;
 const SIDEBAR_WIDTH = '180px';
+const SIDEBAR_WIDTH_ACCORDION = '60px';
+const SIDEBAR_WIDTH_HIDDEN = '0px';
 const SIDEBAR_Z_INDEX = 15;
 const MASK_FOR_SIDEBAR_SHOW_Z_INDEX = 10;
 const MASK_FOR_SIDEBAR_HIDDEN_Z_INDEX = -15;
@@ -18,6 +20,16 @@ Vue.component('topbar-sidebar-toggle-button', {
             if(window.innerWidth <= TABLET_MAX_WIDTH){
                 adminlqApp.sidebarStyle['transform'] = 'translateX(0px)';
                 adminlqApp.maskForSidebarStyle['z-index'] = MASK_FOR_SIDEBAR_SHOW_Z_INDEX;
+            }else{
+                if(adminlqApp.sidebar_accordion_state){
+                    adminlqApp.topbarBlankStyle['width'] = SIDEBAR_WIDTH;
+                    adminlqApp.sidebarStyle['transform'] = 'translateX(0px)';
+                    adminlqApp.sidebar_accordion_state = false;
+                }else{
+                    adminlqApp.topbarBlankStyle['width'] = SIDEBAR_WIDTH_ACCORDION;
+                    adminlqApp.sidebarStyle['transform'] = adminlqApp.sidebar_accordion_translatex;
+                    adminlqApp.sidebar_accordion_state = true;
+                }
             }
         }
     }
@@ -25,12 +37,15 @@ Vue.component('topbar-sidebar-toggle-button', {
 const adminlqApp = new Vue({
     el: '#adminlq-app',
     data: {
+        sidebar_hidden_state: window.innerWidth <= TABLET_MAX_WIDTH,
+        sidebar_accordion_state: true,
+        sidebar_accordion_translatex: `translateX(${(Number(SIDEBAR_WIDTH_ACCORDION.slice(0,(SIDEBAR_WIDTH_ACCORDION.length - 2))) - Number(SIDEBAR_WIDTH.slice(0,(SIDEBAR_WIDTH.length - 2)))).toString()}px)`,
         adminlqTopbarStyle: {
             'height': TOPBAR_HEIGHT,
             'z-index': TOPBAR_Z_INDEX
         },
         topbarBlankStyle: {
-            'width': SIDEBAR_WIDTH,
+            'width': (window.innerWidth <= TABLET_MAX_WIDTH)?SIDEBAR_WIDTH_HIDDEN:SIDEBAR_WIDTH,
             'height': TOPBAR_HEIGHT
         },
         sidebarStyle: {
@@ -55,8 +70,17 @@ const adminlqApp = new Vue({
 window.onresize = () => {
     if(window.innerWidth <= TABLET_MAX_WIDTH){
         adminlqApp.sidebarStyle['transform'] = `translateX(-${SIDEBAR_WIDTH})`;
+        adminlqApp.topbarBlankStyle['width'] = SIDEBAR_WIDTH_HIDDEN;
+        adminlqApp.sidebar_hidden_state = true;
     }else{
-        adminlqApp.sidebarStyle['transform'] = 'translateX(0px)';
+        if(adminlqApp.sidebar_accordion_state){
+            adminlqApp.topbarBlankStyle['width'] = SIDEBAR_WIDTH_ACCORDION;
+            adminlqApp.sidebarStyle['transform'] = adminlqApp.sidebar_accordion_translatex;
+        }else{
+            adminlqApp.topbarBlankStyle['width'] = SIDEBAR_WIDTH;
+            adminlqApp.sidebarStyle['transform'] = 'translateX(0px)';
+        }
     }
     adminlqApp.maskForSidebarStyle['z-index'] = MASK_FOR_SIDEBAR_HIDDEN_Z_INDEX;
+    adminlqApp.sidebar_hidden_state = false;
 };

@@ -1,6 +1,16 @@
 #adminlq-topbar{
     position: fixed;
 }
+#topbar-blank{
+    -webkit-transition-property: width;
+    -moz-transition-property: width;
+    -o-transition-property: width;
+    transition-property: width;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
 /* 注意 */
 #content-blank{
     width: 200px;
