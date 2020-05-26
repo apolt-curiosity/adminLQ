@@ -1,19 +1,17 @@
 #adminlq-topbar{
     position: fixed;
+    display: flex;
+    align-items: center;
 }
-#topbar-blank{
+#topbar-blank, #view-blank, #footer-blank{
     -webkit-transition-property: width;
     -moz-transition-property: width;
     -o-transition-property: width;
     transition-property: width;
-    -webkit-transition-duration: 0.5s;
-    -moz-transition-duration: 0.5s;
-    -o-transition-duration: 0.5s;
-    transition-duration: 0.5s;
-}
-/* 注意 */
-#content-blank{
-    width: 200px;
+    -webkit-transition-duration: 0.46s;
+    -moz-transition-duration: 0.46s;
+    -o-transition-duration: 0.46s;
+    transition-duration: 0.46s;
 }
 #adminlq-sidebar{
     height: 100vh;
@@ -30,22 +28,12 @@
     -o-transition-duration: 0.5s;
     transition-duration: 0.5s;
 }
-/* #sidebar-header{
-    width: 200px;
-    height: 50px;
-} */
-/* #adminlq-content{
-    background-color: #f2f2f2;
-} */
-/* #content-topbar-blank{
-    width: 100%;
-    height:50px;
-    background-color: #f2f2f2;
-} */
 #adminlq-background{
     width: 100vw;
     height: 100vh;
     position: fixed;
+    top:0px;
+    left:0px;
     background-color: #f2f2f2;
 }
 #adminlq-mask-for-sidebar{
@@ -56,21 +44,9 @@
     left:0px;
     background-color: rgba(0, 0, 0, 0.45);
 }
-/* @media (max-width: 1023px) {
-    #topbar-blank{
-        width: 0px;
-    }
-}
-@media (min-width: 1024px) {
-    #topbar-blank{
-        width: 200px;
-    }
-} */
-.div1{
-    padding-top:20px;
-}
-#ds{
+.adminlq-button-transparent{
     background-color: transparent;
     border: transparent;
     outline: none;
+    -webkit-tap-highlight-color: transparent;
 }

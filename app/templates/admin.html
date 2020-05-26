@@ -15,18 +15,27 @@
     {# 顶部工具栏栏 #}
     <div id="adminlq-topbar" class="container is-fluid has-background-white is-marginless is-paddingless" v-bind:style="adminlqTopbarStyle">
       <div class="columns is-mobile is-gapless">
-        <div id="topbar-blank" class="column is-narrow" v-bind:style="topbarBlankStyle"></div>
+        <div id="topbar-blank" class="column is-narrow" v-bind:style="adminlqBlankStyle"></div>
         <div id="topbar-content" class="column">
           <nav class="level is-mobile">
+            {# 顶部工具栏左侧按钮 #}
             <div class="level-left">
+              {# 侧边菜单栏显示／隐藏切换按钮 #}
               <div class="level-item">
-                {# 顶部工具栏左侧按钮 #}
-                <topbar-sidebar-toggle-button></topbar-sidebar-toggle-button>
+                <button id="topbar-sidebar-toggle-button" class="button is-shadowless adminlq-button-transparent" v-on:click="topbarSidebarToggle">
+                  <svg id="topbar-sidebar-toggle-button-ant-indent-svg-icon" viewBox="0 0 1024 1024" width="24" height="24" v-bind:class="antIndentSvgIconClass">
+                    <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zM400 646c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zM904 160H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM904 792H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM142.4 642.1L298.7 519c4.5-3.5 4.5-10.3 0-13.9L142.4 381.9c-5.8-4.6-14.4-0.5-14.4 6.9v246.3c0 7.4 8.5 11.6 14.4 7z"></path>
+                  </svg>
+                  <svg id="topbar-sidebar-toggle-button-ant-outdent-svg-icon" viewBox="0 0 1024 1024" width="24" height="24" v-bind:class="antOutdentSvgIconClass">
+                    <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zM400 646c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zM904 160H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM904 792H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4 0.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1c-4.5 3.5-4.5 10.3 0 13.8z"></path>
+                  </svg>
+                </button>
               </div>
             </div>
+            {# 顶部工具栏右侧按钮 #}
             <div class="level-right">
               <div class="level-item">
-                {# 顶部工具栏右侧按钮 #}
+                {# 仅占位 #}
               </div>
             </div>
           </nav>
@@ -41,72 +50,32 @@
         </div>
       </div>
     </div>
+    {# 视图内容栏 #}
+    <div id="adminlq-view" class="container is-fluid is-marginless is-paddingless"  style="height:calc(100vh - 50px)">
+      <div class="columns is-mobile is-gapless">
+        <div id="view-blank" class="column is-narrow" v-bind:style="adminlqBlankStyle"></div>
+        <div class="column">
+          <div style="height:50px;"></div>
+          <div>
+            <h1>content</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer" class="container is-fluid is-marginless is-paddingless" style="height:50px;">
+      <div class="columns is-mobile is-gapless">
+        <div id="footer-blank" class="column is-narrow" v-bind:style="adminlqBlankStyle"></div>
+        <div class="column">
+          <h1>footer</h1>
+        </div>
+      </div>
+    </div>
     {# 小屏幕设备侧边菜单栏显示时背景 #}
     <div id="adminlq-mask-for-sidebar" v-bind:style="maskForSidebarStyle" v-on:click="maskForSidebarClick"></div>
     {# 屏幕背景 #}
     <div id="adminlq-background" v-bind:style="adminlqBackgroundStyle"></div>
   </div>
-  {# －－－分割线－－－ #}
-  {# 侧边菜单栏显示／隐藏切换按钮 #}
-  {% raw %}
-  <template id="topbar-sidebar-toggle-button-template">
-    <div id="topbar-sidebar-toggle-button">
-      <button id="ds" class="button is-shadowless" v-on:click="topbarSidebarToggle">
-        <svg viewBox="0 0 1024 1024" width="24" height="24">
-          <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zM400 646c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zM904 160H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM904 792H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM142.4 642.1L298.7 519c4.5-3.5 4.5-10.3 0-13.9L142.4 381.9c-5.8-4.6-14.4-0.5-14.4 6.9v246.3c0 7.4 8.5 11.6 14.4 7z"></path>
-        </svg>
-        <svg viewBox="0 0 1024 1024" width="24" height="24">
-          <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zM400 646c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zM904 160H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM904 792H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4 0.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1c-4.5 3.5-4.5 10.3 0 13.8z"></path>
-        </svg>
-      </button>
-    </div>
-  </template>
-  {% endraw %}
-
-  <!-- <div id="adminlq-header" class="container is-fluid has-background-white is-marginless is-paddingless">
-    <div class="columns is-mobile is-gapless">
-      <div id="header-blank" class="column is-narrow is-hidden-touch"></div>
-      <div id="header-content" class="column">
-        <nav class="level is-mobile">
-          <div class="level-left">
-            <div class="level-item">
-              <button id="header-content-sidebar-button" class="is-hidden-desktop is-flex-touch button is-primary" v-on:click="sidebarToggle">OK</button>
-            </div>
-          </div>
-          <div class="level-right">
-            <div class="level-item">
-
-            </div>
-          </div>
-        </nav>
-      </div>
-    </div>
-  </div>
-  <div id="adminlq-sidebar" class="has-background-grey-darker" v-bind:class="classObject">
-    <div id="sidebar-header">
-      <div id="sidebar-header-content" v-bind:style="bb">
-        <p class="has-text-light has-text-centered">Admin</p>
-      </div>
-    </div>
-  </div>
-  <div id="adminlq-content" class="container is-fluid is-marginless is-paddingless">
-    <div class="columns is-mobile is-gapless">
-      <div id="content-blank" class="column is-narrow is-hidden-touch"></div>
-      <div id="content-content" class="column">
-        <div id="content-header-blank"></div>
-
-      </div>
-    </div>
-  </div>
-  <div id="adminlq-footer">
-
-  </div>
-  <div id="adminlq-background"></div>
-  <div id="adminlq-siderbar-mask" v-bind:style="styleObject" v-on:click="sidebarMaskClick"></div>
-   -->
-  
-  
-  {# 最后引入adminlq.js文件 #}
+  {# 引入adminlq.js文件 #}
   <script src="{{ url_for('static', filename='js/adminlq.js') }}"></script>
 </body>
 </html>
