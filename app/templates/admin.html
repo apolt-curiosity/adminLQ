@@ -15,7 +15,7 @@
     {# 顶部工具栏栏 #}
     <div id="adminlq-topbar" class="container is-fluid has-background-white is-marginless is-paddingless" v-bind:style="adminlqTopbarStyle">
       <div class="columns is-mobile is-gapless">
-        <div id="topbar-blank" class="column is-narrow" v-bind:style="adminlqBlankStyle"></div>
+        <div id="topbar-blank" class="column is-narrow" v-bind:style="topbarBlankStyle"></div>
         <div id="topbar-content" class="column">
           <nav class="level is-mobile">
             {# 顶部工具栏左侧按钮 #}
@@ -44,16 +44,15 @@
     </div>
     {# 侧边菜单栏 #}
     <div id="adminlq-sidebar" class="has-background-grey-darker" v-bind:style="sidebarStyle">
-      <div id="sidebar-header">
-        <div id="sidebar-header-content">
-          {# 侧边菜单栏顶部LOGO #}
-        </div>
+      <div id="sidebar-header" v-bind:style="sidebarHeaderStyle">
+        {# 侧边菜单栏顶部LOGO #}
+        <h5 class="subtitle is-5 has-text-centered has-text-light" style="width: 100%;padding-left: 140px;">Admin</h5>
       </div>
     </div>
     {# 视图内容栏 #}
     <div id="adminlq-view" class="container is-fluid is-marginless is-paddingless"  style="height:calc(100vh - 50px)">
       <div class="columns is-mobile is-gapless">
-        <div id="view-blank" class="column is-narrow" v-bind:style="adminlqBlankStyle"></div>
+        <div id="view-blank" class="column is-narrow" v-bind:style="viewBlankStyle"></div>
         <div class="column">
           <div style="height:50px;"></div>
           <div>
@@ -64,7 +63,7 @@
     </div>
     <div id="footer" class="container is-fluid is-marginless is-paddingless" style="height:50px;">
       <div class="columns is-mobile is-gapless">
-        <div id="footer-blank" class="column is-narrow" v-bind:style="adminlqBlankStyle"></div>
+        <div id="footer-blank" class="column is-narrow" v-bind:style="footerBlankStyle"></div>
         <div class="column">
           <h1>footer</h1>
         </div>
