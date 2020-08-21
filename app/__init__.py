@@ -33,5 +33,5 @@ def create_app(config_name='config.flask'):
     def page_not_found(Exception):
         return 'Admin Error 404 ...'
     app.register_error_handler(404, page_not_found)
-    
+
     return app

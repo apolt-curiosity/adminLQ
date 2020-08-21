@@ -35,9 +35,8 @@ def get_cookie():
         if i == 2:
             ret["2"] = user
             break
-       
-   
-    
+
+
     rsa_public_key = current_app.config['RSA_PUBLIC_KEY']
     
     s = request.cookies.get('jwt')
