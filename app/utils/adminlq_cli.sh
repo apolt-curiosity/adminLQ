@@ -14,13 +14,13 @@ readonly FONT_RES="\E[0m"
 basic_command() {
     case "$1" in
         help|h)
-            echo "Help:"
-            echo " h) help   --display the help information"
-            echo " m) menu   --display the current module menu"
-            echo " c) clear  --clear the terminal screen"
-            echo " b) back   --back to home module"
-            echo " i) info   --info"
-            echo " q) quit   --exit script"
+            echo "[Help]:"
+            echo "  h) help   --display the help information"
+            echo "  m) menu   --display the current module menu"
+            echo "  c) clear  --clear the terminal screen"
+            echo "  b) back   --back to home module"
+            echo "  i) info   --info"
+            echo "  q) quit   --exit script"
             ;;
         menu|m)
             echo "menu"
@@ -98,7 +98,7 @@ test_module(){
             /usr/bin/expect <<-EOF
 			spawn sudo su - postgres
 			expect {
-				"password" { send "chq7wyf632\r"; exp_continue }
+				"password" { send "\r"; exp_continue }
 				"postgres" { send "psql adminlq\r" }
 			}
 			expect "adminlq=#"
